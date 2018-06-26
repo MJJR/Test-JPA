@@ -1,12 +1,15 @@
 package dev.banque;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,8 +36,15 @@ public class Client {
 	@JoinColumn(name="ID_BANQUE")
 	private Banque banque;
 	
+	@ManyToMany(mappedBy="clients")
+	private Set<Compte> comptes;
+	
+	/**
+	 * 
+	 */
 	public Client(){
 		
+		this.comptes = new HashSet<Compte>();
 	}
 
 	/**
@@ -92,5 +102,49 @@ public class Client {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the banque
+	 */
+	public Banque getBanque() {
+		return banque;
+	}
+
+	/**
+	 * @param banque the banque to set
+	 */
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
+	/**
+	 * @return the comptes
+	 */
+	public Set<Compte> getComptes() {
+		return comptes;
+	}
+
+	/**
+	 * @param comptes the comptes to set
+	 */
+	public void setComptes(Set<Compte> comptes) {
+		this.comptes = comptes;
+	}
+	
+	
 	
 }

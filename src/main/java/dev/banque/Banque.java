@@ -21,6 +21,7 @@ public class Banque {
 	
 	@Column(name = "NOM",length = 50 , nullable = false, unique = true)
 	private String nom;
+
 	
 	public Banque(){
 		clients = new HashSet<Client>();
@@ -53,6 +54,22 @@ public class Banque {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 }
