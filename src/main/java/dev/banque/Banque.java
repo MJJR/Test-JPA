@@ -5,25 +5,44 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Banque.java
+ * 
+ * @author matth
+ */
 @Entity
-@Table(name="BANQUE")
+@Table(name = "BANQUE")
 public class Banque {
-	
+
+	/**
+	 * id : int
+	 */
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-	@OneToMany(mappedBy="banque")
+
+	/**
+	 * clients : Set<Client>
+	 */
+	@OneToMany(mappedBy = "banque")
 	private Set<Client> clients;
-	
-	@Column(name = "NOM",length = 50 , nullable = false, unique = true)
+
+	/**
+	 * nom : String
+	 */
+	@Column(name = "NOM", length = 50, nullable = false, unique = true)
 	private String nom;
 
-	
-	public Banque(){
+	/**
+	 * Constructor of Banque.java
+	 */
+	public Banque() {
 		clients = new HashSet<Client>();
 	}
 
@@ -35,7 +54,8 @@ public class Banque {
 	}
 
 	/**
-	 * @param clients the clients to set
+	 * @param clients
+	 *            the clients to set
 	 */
 	public void setClients(Set<Client> clients) {
 		this.clients = clients;
@@ -49,7 +69,8 @@ public class Banque {
 	}
 
 	/**
-	 * @param nom the nom to set
+	 * @param nom
+	 *            the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -63,13 +84,11 @@ public class Banque {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+
 }

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Adresse {
 	
 	
-	@Column(name = "NUMERO", nullable = false, unique = true)
+	@Column(name = "NUMERO", nullable = false, unique = false)
 	private int numero;
 	@Column(name = "RUE",length = 100, nullable = false, unique = false)
 	private String rue;
